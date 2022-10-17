@@ -11,12 +11,6 @@ const EditToDoButton = (props: any) => {
 
     const [insertNewTitle, setInsertNewTitle] = useState('');
     const [ isOpen, setIsOpen ] = useState(false);
-
-
-    const handleNewTitle = (event: any) => {
-        const value = event.target.value;
-        setInsertNewTitle(value);
-    }
     
     const handleShow = () => {
         setInsertNewTitle('');
@@ -37,14 +31,13 @@ const EditToDoButton = (props: any) => {
             <div>
                 <Button className='btn-custom' type='submit' onClick={() => handleShow()}>{title}</Button>
             </div>
-            {/* <ModalEditToDo handleShow={handleShow} handleClose={handleClose} isOpen={isOpen} setIsOpen={setIsOpen}/> */}
 
             <Modal show={isOpen === true} onHide={handleClose} className='modal'>
                 <Modal.Header closeButton>
                     <Modal.Title>Edit To-Do Title</Modal.Title>
                 </Modal.Header>
                 <Modal.Body className='centered'>
-                    <input type='text' className='input-custom' placeholder={title} onChange={(event: any) => handleNewTitle(event)} value={insertNewTitle}></input>
+                    <input type='text' className='input-custom' placeholder={title} onChange={(event: any) => setInsertNewTitle(event.target.value.toLowerCase())} value={insertNewTitle}></input>
                 </Modal.Body>
                 <Modal.Footer>
                     <SaveButtonComponent ToDoList={ToDoList} insertNewTitle={insertNewTitle} item={item} setFilteredToDo={setFilteredToDo} handleClose={handleClose} setToDoList={setToDoList}/>

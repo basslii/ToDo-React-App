@@ -11,31 +11,19 @@ const AddInput = () => {
     const [ToDoList, setToDoList] = useState<Itodo[]>([]);
     const [inputText, setInputText] = useState('');
 
-    //Input To Do Change Handler Function
-    const changeHandler = (event: any) => {
-        const value = event.target.value;
-        setInputText(value.toLowerCase());
-    }
-
-    const handleToDo = () => {
-        
-    }
-
     const onClickAddButton = () => {
         if(inputText.length > 0) {
             const newToDoList:Itodo = {id: UUIDV4().split('-')[0], title:inputText, status: 'not completed'};
             setToDoList([...ToDoList, newToDoList,]);
             
             //clear input text after data is added
-            setTimeout(() => {
-                setInputText('');
-            }, 500);
+            setInputText('');
         }
     }
 
     return (
         <Fragment>
-            <input className="form-control search-bar" placeholder="Add To-Do List" type="text" onChange={(event) => changeHandler(event)} value={inputText}/>
+            <input className="form-control search-bar" placeholder="Add To-Do List" type="text" onChange={(event) => setInputText(event.target.value.toLowerCase())} value={inputText}/>
             <AddButton onClickAddButton={onClickAddButton}/>
             <SearchComponent ToDoList={ToDoList}/>
         </Fragment>

@@ -6,11 +6,8 @@ const SaveButtonComponent = (props: any) => {
 
     const { ToDoList, insertNewTitle, item, setFilteredToDo, handleClose, setToDoList} = props;
 
-    // const [storeChangeToDo, setStoreChangeToDo] = useState<Itodo>(ToDoList);
 
-    const saveEditedToDo = async () => {
-        // console.log('id to change text title: ', item.id);
-        // console.log('new title to replace: ', insertNewTitle);  
+    const saveEditedToDo = () => {
 
         ToDoList.map((element: any) => {
             if(element.id === item.id) {
@@ -18,10 +15,9 @@ const SaveButtonComponent = (props: any) => {
             }
         })
         
-        // setStoreChangeToDo(ToDoList)
-        await setFilteredToDo(ToDoList);
+        // setFilteredToDo([...ToDoList]);
+        setFilteredToDo([...ToDoList]);
         
-        console.log('ToDoList after change saveEditedToDo: ', ToDoList);
         
         setTimeout(() => {
             handleClose();
@@ -30,7 +26,7 @@ const SaveButtonComponent = (props: any) => {
 
     return (
         <Fragment>
-            <Button variant='primary' onClick={() => saveEditedToDo()} disabled={insertNewTitle.length <= 0}>Save</Button>
+            <Button variant='primary' onClick={() => saveEditedToDo()} disabled={insertNewTitle.length < 1}>Save</Button>
         </Fragment>
     )
 }

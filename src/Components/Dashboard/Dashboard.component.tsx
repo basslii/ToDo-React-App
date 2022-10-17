@@ -6,8 +6,8 @@ const DashboardComponent = () => {
 
         return (
             <div className='Dashboard-Container'>
-                <div style={{padding: '20px'}}>
-                    <h1> Input will be here</h1>   
+                <div className='app-title'>
+                    <h1>To-Do Tracker App</h1>   
                 </div>
                 <AddInput/>
             </div>

@@ -40,7 +40,7 @@ const EditToDoButton = (props: any) => {
                     <input type='text' className='input-custom' placeholder={title} onChange={(event: any) => setInsertNewTitle(event.target.value.toLowerCase())} value={insertNewTitle}></input>
                 </Modal.Body>
                 <Modal.Footer>
-                    <SaveButtonComponent ToDoList={ToDoList} insertNewTitle={insertNewTitle} item={item} setFilteredToDo={setFilteredToDo} handleClose={handleClose} setToDoList={setToDoList}/>
+                    <SaveButtonComponent ToDoList={ToDoList} insertNewTitle={insertNewTitle} item={item} setFilteredToDo={setFilteredToDo} handleClose={handleClose}/>
                     <Button variant='Secondary' onClick={handleClose}>Close</Button>
                 </Modal.Footer>
             </Modal>

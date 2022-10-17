@@ -4,8 +4,7 @@ import { Itodo } from '../ToDoInterface';
 
 const SaveButtonComponent = (props: any) => {
 
-    const { ToDoList, insertNewTitle, item, setFilteredToDo, handleClose, setToDoList} = props;
-
+    const { ToDoList, insertNewTitle, item, setFilteredToDo, handleClose } = props;
 
     const saveEditedToDo = () => {
 

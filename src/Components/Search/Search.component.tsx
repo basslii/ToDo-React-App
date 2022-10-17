@@ -24,10 +24,7 @@ const SearchComponent = (props: any) => {
             })
 
             setSearch(value);
-            setTimeout( async () => {
-                setFilteredToDo(filtered);
-            }, 500); 
-
+            setFilteredToDo(filtered);
         } else {
             setSearch(value);
             setToDoList([...ToDoList]);
@@ -38,7 +35,7 @@ const SearchComponent = (props: any) => {
     return (
         <Fragment>
             <input className="form-control search-bar" type="search" placeholder='Search To-Do List' onChange={(event)=> onSearch(event)} value={search}/>
-            <div style={{marginBottom: '30px'}}>
+            <div style={{marginBottom: '30px', marginTop: '80px'}}>
                 <h1> Your To Do List</h1>
             </div>
             <ToDoComponent ToDoList={ToDoList} setToDoList={setToDoList} filteredToDo={filteredToDo} setFilteredToDo={setFilteredToDo} setSearch={setSearch}/>

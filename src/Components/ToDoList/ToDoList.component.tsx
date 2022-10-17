@@ -11,9 +11,7 @@ const ToDoComponent = (props:any) => {
     const [ updatedToDoList, setUpdatedToDoList ] = useState(ToDoList);
     
     useEffect(() => {
-        setTimeout( async () => {
             setUpdatedToDoList(ToDoList);
-        }, 500);
     });
 
     useEffect(() => {
@@ -48,52 +46,29 @@ const ToDoComponent = (props:any) => {
             setUpdatedToDoList([...ToDoList]);
         }
 
-        //? set the dropdown value to default value
         setTimeout(() => {
             event.target.value = '';
         }, 300);
     }
     
-    const handleDeleteData = async (id: number, index: number) => {
-        // console.log('target index: ', index)
-        // console.log('target id: ', id)
+    const handleDeleteData = (id: number, index: number) => {
 
-        // custom function that can delete data from initial table and searched data
         for(let [i, v] of ToDoList.entries()) {
             if(v.id === id) {
-                setTimeout(async () => {
-                    // splice method to return the remove the selected or searched data
-                    await ToDoList.splice(i, 1);
-                }, 500);
-    
+                ToDoList.splice(i, 1);
             }
         }
         
-        // Example to show as a failed function
-        // function to delete object from the array
-        // ! Does not work on searched data 
-        // ToDoList.filter(async (item: any) => {
-        //     if(item.id === id) {
-        //         console.log('filter item id: ', item.id);
-        //         return ToDoList.splice(index, 1)
-        //     }
-        // })
-
-        //to store the remaining data after deleting 
         setUpdatedToDoList([...updatedToDoList]);
         
-        await setFilteredToDo(updatedToDoList);
+        setFilteredToDo(updatedToDoList);
         
-        setTimeout(() => {
-            // transferring the update to the filtered to be displayed in the UI
-            
-            // reset the search input text after delete
+        setTimeout(() => {            
             setSearch('');
         }, 500)
         
     }
     
-    // render the UI of the ToDoList table
     return (
         
             <Fragment>
@@ -102,9 +77,9 @@ const ToDoComponent = (props:any) => {
                         <thead>
                             <tr>
                                 <th style={{width: '75px'}} className='title-font'>#</th>
-                                <th style={{width: '100px'}} className='title-font'>Task id</th>
+                                <th style={{width: '120px'}} className='title-font'>Task id</th>
                                 <th className='title-font'>To Do Lists</th>
-                                <th style={{width: '150px'}} className='title-font'>Progress</th>
+                                <th style={{width: '120px'}} className='title-font'>Progress</th>
                                 <th style={{width: '250px'}} className='title-font'>Update</th>
                             </tr>
                         </thead>

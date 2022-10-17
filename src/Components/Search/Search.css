@@ -1,0 +1,12 @@
+.ToDo-Input {
+    display: flex;
+    flex-direction: column;
+    align-content: center;
+    justify-content: center;
+    align-items: center;
+}    
+
+.search-bar {
+    width: 50%;
+    margin: 5px;
+}

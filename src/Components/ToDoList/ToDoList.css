@@ -1,0 +1,31 @@
+.table-container {
+    width: 90%;
+}
+
+.center {
+    /* display: flex;
+    justify-content: center; */
+    text-align: center;
+}
+
+th{
+    text-align: center;
+}
+
+/* .font-red {
+    background-color: red;
+}
+
+.font-green {
+    color: green;
+} */
+
+.space-evenly {
+    display: flex;
+    justify-content: space-evenly;
+}
+
+.title-font {
+    font-weight: 700;
+    font-size: 22px;
+}

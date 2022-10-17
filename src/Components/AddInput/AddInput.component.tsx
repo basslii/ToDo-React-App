@@ -9,7 +9,6 @@ import {v4 as UUIDV4 } from 'uuid';
 const AddInput = () => {
 
     const [ToDoList, setToDoList] = useState<Itodo[]>([]);
-    // const [ToDoList, setToDoList] = useState<Map<string, Itodo>>(new Map());
     const [inputText, setInputText] = useState('');
 
     //Input To Do Change Handler Function
@@ -22,13 +21,9 @@ const AddInput = () => {
         
     }
 
-    // useEffect(() => {
-    //     setToDoList(ToDoList);
-    // }, [ToDoList]);
-
     const onClickAddButton = () => {
         if(inputText.length > 0) {
-            const newToDoList:Itodo = {id: UUIDV4().split('-')[0], title:inputText, completed: 'not completed'};
+            const newToDoList:Itodo = {id: UUIDV4().split('-')[0], title:inputText, status: 'not completed'};
             setToDoList([...ToDoList, newToDoList,]);
             
             //clear input text after data is added

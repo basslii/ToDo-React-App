@@ -6,6 +6,7 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 
 
 const EditToDoButton = (props: any) => {
+    
     const { title, ToDoList, item, setFilteredToDo, setSearch, setToDoList } = props;
 
     const [insertNewTitle, setInsertNewTitle] = useState('');
@@ -18,17 +19,17 @@ const EditToDoButton = (props: any) => {
     }
     
     const handleShow = () => {
-        // console.log('Modal is Opened');
-        // console.log('selected item: ', item);
         setInsertNewTitle('');
         setIsOpen(true);
 
     };
     const handleClose = () => {
-        // console.log('Modal closed');
         setInsertNewTitle('');
         setIsOpen(false);
-        setSearch('');
+
+        setTimeout(() => {
+            setSearch('');
+        }, 300);
     };
 
     return (

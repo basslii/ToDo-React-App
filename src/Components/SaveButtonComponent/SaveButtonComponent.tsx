@@ -14,7 +14,6 @@ const SaveButtonComponent = (props: any) => {
             }
         })
         
-        // setFilteredToDo([...ToDoList]);
         setFilteredToDo([...ToDoList]);
         
         

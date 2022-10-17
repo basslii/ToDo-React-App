@@ -1,7 +1,7 @@
 import { Fragment, useEffect, useState } from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './Search.css';
-import ToDolist from '../ToDoList/ToDoList.component';
+import ToDoComponent from '../ToDoList/ToDoList.component';
 
 const SearchComponent = (props: any) => {
 
@@ -9,6 +9,10 @@ const SearchComponent = (props: any) => {
 
     const [ filteredToDo, setFilteredToDo ] = useState(ToDoList);
     const [ search, setSearch ] = useState('');
+
+    useEffect(() => {
+        setFilteredToDo(ToDoList);
+    }, [ToDoList]);
 
     const onSearch = async (event:any) => {
         const value = event.target.value
@@ -37,7 +41,7 @@ const SearchComponent = (props: any) => {
             <div style={{marginBottom: '30px'}}>
                 <h1> Your To Do List</h1>
             </div>
-            <ToDolist ToDoList={ToDoList} setToDoList={setToDoList} filteredToDo={filteredToDo} setFilteredToDo={setFilteredToDo} setSearch={setSearch}/>
+            <ToDoComponent ToDoList={ToDoList} setToDoList={setToDoList} filteredToDo={filteredToDo} setFilteredToDo={setFilteredToDo} setSearch={setSearch}/>
         </Fragment>
     )
     

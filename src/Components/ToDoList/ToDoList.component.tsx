@@ -5,11 +5,11 @@ import EditButton from '../EditButton/EditButton';
 import EditToDoButton from '../EditToDoButton/EditToDoButton';
 import './ToDoList.css'
 
-const ToDolist = (props:any) => {
+const ToDoComponent = (props:any) => {
     const { ToDoList, setToDoList, filteredToDo, setFilteredToDo, setSearch} = props;
     
     const [ updatedToDoList, setUpdatedToDoList ] = useState(ToDoList);
-
+    
     useEffect(() => {
         setTimeout( async () => {
             setUpdatedToDoList(ToDoList);
@@ -18,6 +18,8 @@ const ToDolist = (props:any) => {
 
     useEffect(() => {
         setFilteredToDo(ToDoList);
+        // setTimeout(async () => {
+        // }, 500)
     },[ToDoList]);
 
     const handleEditData = async (event: any, id: number) => {
@@ -28,7 +30,7 @@ const ToDolist = (props:any) => {
             ToDoList.filter((item: any) => {
                 return item.id === id;
             }).map((item: any) => {
-                item.completed = 'completed';
+                item.status = 'completed';
                 return item;
             })
 
@@ -39,7 +41,7 @@ const ToDolist = (props:any) => {
             ToDoList.filter((item: any) => {
                 return item.id === id;
             }).map((item: any) => {
-                item.completed = 'not completed';
+                item.status = 'not completed';
                 return item;
             })
 
@@ -56,12 +58,11 @@ const ToDolist = (props:any) => {
         // console.log('target index: ', index)
         // console.log('target id: ', id)
 
-        //? custom function that can delete data from initial table and searched data
+        // custom function that can delete data from initial table and searched data
         for(let [i, v] of ToDoList.entries()) {
             if(v.id === id) {
                 setTimeout(async () => {
-                    // console.log(`${i}: `, v);  
-                    //? splice method to return the remove the selected or searched data
+                    // splice method to return the remove the selected or searched data
                     await ToDoList.splice(i, 1);
                 }, 500);
     
@@ -81,11 +82,11 @@ const ToDolist = (props:any) => {
         //to store the remaining data after deleting 
         setUpdatedToDoList([...updatedToDoList]);
         
-        setFilteredToDo(updatedToDoList);
-
+        await setFilteredToDo(updatedToDoList);
+        
         setTimeout(() => {
             // transferring the update to the filtered to be displayed in the UI
-
+            
             // reset the search input text after delete
             setSearch('');
         }, 500)
@@ -94,7 +95,7 @@ const ToDolist = (props:any) => {
     
     // render the UI of the ToDoList table
     return (
-        <React.StrictMode>
+        
             <Fragment>
                 <div className='table-container'>
                     <Table striped bordered hover variant="dark" size='sm'>
@@ -120,8 +121,7 @@ const ToDolist = (props:any) => {
                                                 <td>
                                                     <EditToDoButton title={el.title} ToDoList={ToDoList} item={el} setFilteredToDo={setFilteredToDo} setSearch={setSearch} setToDoList={setToDoList}/>
                                                 </td>
-                                                {/* <td>{el.title}</td> */}
-                                                <td className='center' style={{color: el.completed === 'not completed' ? 'red' : 'green'}}>{el.completed}</td>
+                                                <td className='center' style={{color: el.status === 'not completed' ? 'red' : 'green'}}>{el.status}</td>
                                                 <td>
                                                     <div className='space-evenly'>
                                                         <EditButton handleEditData={(event: any) => handleEditData(event, el.id)}/>
@@ -137,9 +137,9 @@ const ToDolist = (props:any) => {
                     </Table>
                 </div>
             </Fragment>
-        </React.StrictMode>
+        
     )
 
 };
 
-export default ToDolist;
+export default ToDoComponent;

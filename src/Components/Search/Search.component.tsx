@@ -20,7 +20,7 @@ const SearchComponent = (props: any) => {
         if(event.target.length !== 0) {
 
             const filtered = ToDoList.filter((item: any) => {
-                return item.title.includes(value.toString().toLowerCase().trim());
+                return item.task.includes(value.toString().toLowerCase().trim());
             })
 
             setSearch(value);
@@ -38,7 +38,7 @@ const SearchComponent = (props: any) => {
             <div style={{marginBottom: '30px', marginTop: '80px'}}>
                 <h1> Your To Do List</h1>
             </div>
-            <ToDoComponent ToDoList={ToDoList} setToDoList={setToDoList} filteredToDo={filteredToDo} setFilteredToDo={setFilteredToDo} setSearch={setSearch}/>
+            <ToDoComponent ToDoList={ToDoList} filteredToDo={filteredToDo} setFilteredToDo={setFilteredToDo} setSearch={setSearch}/>
         </Fragment>
     )
     

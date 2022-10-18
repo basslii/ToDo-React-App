@@ -1,6 +1,5 @@
-import { Fragment, useState } from 'react';
+import { Fragment } from 'react';
 import { Button } from 'react-bootstrap';
-import { Itodo } from '../ToDoInterface';
 
 const SaveButtonComponent = (props: any) => {
 
@@ -10,7 +9,7 @@ const SaveButtonComponent = (props: any) => {
 
         ToDoList.map((element: any) => {
             if(element.id === item.id) {
-                element.title = insertNewTitle
+                return element.task = insertNewTitle;
             }
         })
         

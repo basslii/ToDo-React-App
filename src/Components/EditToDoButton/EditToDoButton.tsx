@@ -7,7 +7,7 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 
 const EditToDoButton = (props: any) => {
     
-    const { title, ToDoList, item, setFilteredToDo, setSearch, setToDoList } = props;
+    const { title, ToDoList, item, setFilteredToDo, setSearch } = props;
 
     const [insertNewTitle, setInsertNewTitle] = useState('');
     const [ isOpen, setIsOpen ] = useState(false);

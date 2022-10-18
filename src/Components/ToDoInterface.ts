@@ -1,6 +1,6 @@
 
 export interface Itodo {
-    id: string,
-    title: string,
+    id: number,
+    task: string,
     status: string,
 };

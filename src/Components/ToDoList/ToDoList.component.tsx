@@ -1,4 +1,4 @@
-import React, { Fragment, useEffect, useState } from 'react';
+import { Fragment, useEffect, useState } from 'react';
 import Table from 'react-bootstrap/esm/Table';
 import DeleteButton from '../DeleteButton/DeleteButton';
 import EditButton from '../EditButton/EditButton';
@@ -72,16 +72,25 @@ const ToDoComponent = (props:any) => {
     return (
         
             <Fragment>
+                <div className='todo-number'>
+                    <h3>You have currently <b style={{color: 'black'}}>{ToDoList.length}</b> To-Do list</h3>
+                </div>
                 <div className='table-container'>
                     <Table striped bordered hover variant="dark" size='sm'>
                         <thead>
-                            <tr>
-                                <th style={{width: '75px'}} className='title-font'>#</th>
-                                <th style={{width: '120px'}} className='title-font'>Task id</th>
-                                <th className='title-font'>To Do Lists</th>
-                                <th style={{width: '120px'}} className='title-font'>Progress</th>
-                                <th style={{width: '250px'}} className='title-font'>Update</th>
-                            </tr>
+                            {
+                                filteredToDo.length !== 0 
+                                ?
+                                    <tr>
+                                        <th style={{width: '75px'}} className='title-font'>#</th>
+                                        <th style={{width: '120px'}} className='title-font'>Task id</th>
+                                        <th className='title-font'>To Do Lists</th>
+                                        <th style={{width: '120px'}} className='title-font'>Progress</th>
+                                        <th style={{width: '250px'}} className='title-font'>Update</th>
+                                    </tr>
+                                :  
+                                    false
+                            }
                         </thead>
                         <tbody>
                             {

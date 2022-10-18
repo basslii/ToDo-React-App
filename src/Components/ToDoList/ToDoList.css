@@ -29,3 +29,8 @@ th{
     font-weight: 700;
     font-size: 22px;
 }
+
+.todo-number {
+    color: grey;
+    padding-bottom: 20px;
+}

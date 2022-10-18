@@ -6,12 +6,12 @@ import EditToDoButton from '../EditToDoButton/EditToDoButton';
 import './ToDoList.css'
 
 const ToDoComponent = (props:any) => {
-    const { ToDoList, setToDoList, filteredToDo, setFilteredToDo, setSearch} = props;
+    const { ToDoList, filteredToDo, setFilteredToDo, setSearch} = props;
     
     const [ updatedToDoList, setUpdatedToDoList ] = useState(ToDoList);
     
     useEffect(() => {
-            setUpdatedToDoList(ToDoList);
+        setUpdatedToDoList(ToDoList);
     });
 
     useEffect(() => {
@@ -51,7 +51,7 @@ const ToDoComponent = (props:any) => {
         }, 300);
     }
     
-    const handleDeleteData = (id: number, index: number) => {
+    const handleDeleteData = (id: number) => {
 
         for(let [i, v] of ToDoList.entries()) {
             if(v.id === id) {
@@ -68,6 +68,11 @@ const ToDoComponent = (props:any) => {
         }, 500)
         
     }
+
+    // get data from DB
+    // const baseUrl = 'http://localhost:3300/todos/';
+    // fetch(baseUrl).then(res => res.json()).then(data => console.log(data));
+
     
     return (
         
@@ -99,17 +104,17 @@ const ToDoComponent = (props:any) => {
                                     const num = index + 1;
                                     return (
                                         <Fragment>
-                                            <tr key={num}>
+                                            <tr key={el.id}>
                                                 <td className='center'>{num}</td>
                                                 <td className='center'>{el.id}</td>
                                                 <td>
-                                                    <EditToDoButton title={el.title} ToDoList={ToDoList} item={el} setFilteredToDo={setFilteredToDo} setSearch={setSearch} setToDoList={setToDoList}/>
+                                                    <EditToDoButton title={el.task} ToDoList={ToDoList} item={el} setFilteredToDo={setFilteredToDo} setSearch={setSearch}/>
                                                 </td>
                                                 <td className='center' style={{color: el.status === 'not completed' ? 'red' : 'green'}}>{el.status}</td>
                                                 <td>
                                                     <div className='space-evenly'>
                                                         <EditButton handleEditData={(event: any) => handleEditData(event, el.id)}/>
-                                                        <DeleteButton handleDeleteData={() => handleDeleteData(el.id, index)}/>
+                                                        <DeleteButton handleDeleteData={() => handleDeleteData(el.id)}/>
                                                     </div>
                                                 </td>
                                             </tr>

@@ -12,7 +12,7 @@ const getTasks = (req, res) => {
 
 //*  Get Task By Id
 const getTaskById = (req, res) => {
-    const id = parseInt(request.params.id)
+    const id = parseInt(req.params.id)
 
     pool.query('SELECT * FROM tasks WHERE id = $1', [id], (error, results) => {
         if (error) {
@@ -24,9 +24,9 @@ const getTaskById = (req, res) => {
 
 //* Post New Task
 const createTask = (req, res) => {
-    const { id, name, email } = request.body
+    const { task, status } = req.body
 
-    pool.query('INSERT INTO tasks (id, name, email) VALUES ($1, $2, $3) RETURNING *', [id, name, email], (error, results) => {
+    pool.query('INSERT INTO tasks (task, status) VALUES ($1, $2) RETURNING *', [task, status], (error, results) => {
         if (error) {
             throw error
         }
@@ -37,9 +37,9 @@ const createTask = (req, res) => {
 //* Update Task
 const updateTask = (req, res) => {
     const id = parseInt(request.params.id)
-    const { name, email } = request.body
+    const { task, status } = req.body
   
-    pool.query('UPDATE tasks SET name = $1, email = $2 WHERE id = $3',[name, email, id],
+    pool.query('UPDATE tasks SET task = $1, status = $2 WHERE id = $3',[task, status, id],
         (error, results) => {
             if (error) {
                 throw error
@@ -51,7 +51,8 @@ const updateTask = (req, res) => {
 
 //* delete Task
 const deleteTask = (req, res) => {
-    const id = parseInt(request.params.id)
+    // const id = parseInt(request.params.id)
+    const { id } = req.body
 
     pool.query('DELETE FROM tasks WHERE id = $1', [id], (error, results) => {
         if (error) {

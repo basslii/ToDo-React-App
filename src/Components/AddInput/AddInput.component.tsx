@@ -16,7 +16,7 @@ const AddInput = () => {
         const uuidNum = parseInt(UUIDV4().split('-')[0].replaceAll(/[a-zA-Z]/g , ""));
 
         if(inputText.length > 0) {
-            const newToDoList:Itodo = {id: uuidNum, task:inputText, status: 'not completed'};
+            const newToDoList:Itodo = {id: uuidNum, task: inputText, status: 'not completed'};
             setToDoList([...ToDoList, newToDoList,]);
             
             //clear input text after data is added
